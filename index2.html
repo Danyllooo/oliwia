@@ -6,58 +6,71 @@
 <title>Dla Ciebie ❤️</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
   font-family:Arial;
-  color: white;
+  color:white;
 }
 
-body{
-  height:100vh;
+html, body{
+  height:100%;
   overflow:hidden;
-  background:linear-gradient(135deg,#ff4d6d,#ff8fab,#ffc2d1);
 }
 
+/* TŁO */
+body{
+  background: linear-gradient(135deg,#ff4d6d,#ff8fab,#ffc2d1);
+  position:relative;
+}
 
+/* TEKSTURA */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("back.jpg") repeat;
+  background-size:5100px;
+  opacity:0.18;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* STRONY */
 .page{
-  position:absolute;
-  width:100%;
-  height:100vh;
+  position:fixed;
+  inset:0;
   display:none;
   justify-content:center;
   align-items:center;
+  z-index:1;
 }
 
-.active{display:flex;}
+.active{
+  display:flex;
+}
 
-/* karta */
-  .card{
-    position: relative;
-    z-index: 5;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
-    padding: 35px;
-    border-radius: 30px;
-    text-align:center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.2);
-    animation: floatCard 4s ease-in-out infinite;
-  }
+/* KARTA */
+.card{
+  position:relative;
+  z-index:5;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  padding:35px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  border:1px solid rgba(255,255,255,0.2);
+  animation:floatCard 4s ease-in-out infinite;
+}
 
-  @keyframes floatCard{
-    0%,100%{
-      transform: translateY(0px);
-    }
-    50%{
-      transform: translateY(-10px);
-    }
-  }
+@keyframes floatCard{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
 
-
-/* przyciski */
+/* PRZYCISKI */
 .buttons{
   position:relative;
   height:100px;
@@ -69,73 +82,88 @@ button{
   border-radius:40px;
   border:none;
   cursor:pointer;
-  font-weight:bold;
+  font-weight:800;
   position:absolute;
   transition:0.2s ease;
+  font-size:1.05rem;
 }
 
 #yes{
-  background:white;
-  color:#ff4d6d;
+  background:linear-gradient(180deg,#fff,#ffeef2);
+  color:#ff3b5a;
   left:-100px;
 }
 
 #no{
-  background:red;
-  color:white;
+  background:linear-gradient(180deg,#ff6b6b,#e04343);
   right:-100px;
 }
 
-/* ❤️ NAPRAWIONE SERCE ZE ZDJĘĆ (TO BYŁ PROBLEM) */
-.hearto{
-  display:grid;
-  grid-template-columns:repeat(5, 80px);
-  justify-content:center;
-  gap:8px;
-  margin:25px auto;
+/* GALERIA SERCE */
+.gallery-wrap{
+  text-align:center;
 }
 
-/* zdjęcia BEZ ZMIANY NAZW */
-.hearto img{
-  width:75px;
-  height:75px;
+.photos{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:280px;
+
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+
+.photos img{
+  width:80px;
+  height:80px;
   object-fit:cover;
   border-radius:15px;
-  border:3px solid white;
-  box-shadow:0 0 15px rgba(255,255,255,0.6);
-  cursor:pointer;
+  border:2px solid rgba(255,255,255,0.9);
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+  transition:0.2s;
+}
+.heart-bg{
+  position:center;
+  width:90vw;
+  max-width:600px;
+  opacity:0.15;
+  z-index:0;
+}
+.photos img:hover{
+  transform:scale(1.15);
+  z-index:10;
 }
 
-/* układ SERCA (ważne – teraz stabilne) */
-.img1{grid-column:2;}
-.img2{grid-column:3;}
-.img3{grid-column:4;}
+/* SERCE UKŁAD */
 
-.img4{grid-column:1;}
-.img5{grid-column:2;}
-.img6{grid-column:3;}
-.img7{grid-column:4;}
-.img8{grid-column:5;}
+.hearto img:nth-child(1){ top:20px; left:80px; }
+.hearto img:nth-child(2){ top:20px; left:170px; }
 
-.img9{grid-column:1;}
-.img10{grid-column:2;}
-.img11{grid-column:3;}
-.img12{grid-column:4;}
-.img13{grid-column:5;}
+.hearto img:nth-child(3){ top:70px; left:40px; }
+.hearto img:nth-child(4){ top:70px; left:120px; }
+.hearto img:nth-child(5){ top:70px; left:200px; }
+.hearto img:nth-child(6){ top:70px; left:260px; }
 
-.img14{grid-column:2;}
-.img15{grid-column:3;}
-.img16{grid-column:4;}
+.hearto img:nth-child(7){ top:130px; left:20px; }
+.hearto img:nth-child(8){ top:130px; left:90px; }
+.hearto img:nth-child(9){ top:130px; left:160px; }
+.hearto img:nth-child(10){ top:130px; left:230px; }
 
-.img17{grid-column:3;}
+.hearto img:nth-child(11){ top:190px; left:40px; }
+.hearto img:nth-child(12){ top:190px; left:120px; }
+.hearto img:nth-child(13){ top:190px; left:200px; }
+
+.hearto img:nth-child(14){ top:250px; left:120px; }
+.hearto img:nth-child(15){ top:250px; left:160px; }
 
 /* LIGHTBOX */
 .lightbox{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:rgba(0,0,0,0.7);
   display:flex;
   justify-content:center;
@@ -147,32 +175,51 @@ button{
   width:80%;
   max-width:500px;
   border-radius:20px;
-  border:4px solid white;
-  box-shadow:0 0 30px rgba(255,255,255,0.5);
 }
 
 /* SERCA W TLE */
 .heart{
-  position:absolute;
+  position:fixed;
   color:white;
   opacity:0.7;
   pointer-events:none;
-  animation: floatUp linear forwards;
+  animation:floatUp linear forwards;
+  z-index:1;
 }
 
-@keyframes floatUp {
-  0% {transform: translateY(100vh) scale(1); opacity:0;}
-  20% {opacity:1;}
-  100% {transform: translateY(-10vh) scale(1.6); opacity:0;}
+@keyframes floatUp{
+  0%{transform:translateY(100vh); opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-10vh); opacity:0;}
 }
 
 .cat{
-  width: 220px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: 0.4s;
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
 }
 
+#backBtn{
+  position:absolute;
+  bottom:410px;
+  left:50%;
+  transform:translateX(-50%);
+  
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:800;
+  
+  background:white;
+  color:#ff3b5a;
+  box-shadow:0 8px 18px rgba(0,0,0,0.2);
+  transition:0.2s;
+}
+
+#backBtn:hover{
+  transform:translateX(-50%) scale(1.05);
+}
 </style>
 </head>
 
@@ -181,84 +228,83 @@ button{
 <!-- STRONA 1 -->
 <div class="page active" id="page1">
   <div class="card">
-    <h1>Oliwia ❤️</h1>
-    <p>Kochasz mnie?</p>
-  <img 
-    class="cat"
-    src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzNsMG1keTI4emxpbzVpanlwcWdrNW81eGI1emJ0cWFwandpanN5aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vPzbDN4rBxuvtpSpzF/giphy.gif"
-    alt="Cute cat"
-  >
-    <div class="buttons">
+
+    <h1>❤️ Oliwka ❤️</h1><br>
+    <h2>Kochasz mnie?</h2><br>
+    <img class="cat"
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDVkZnE5eW83bzQxNWg4d3p6cGNtaHFpZGt1djAwczhza2I1bzJ4ZCZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif"> 
+      <div class="buttons">
       <button id="yes">TAK ❤️</button>
       <button id="no">NIE 😢</button>
     </div>
+
   </div>
 </div>
 
 <!-- STRONA 2 -->
 <div class="page" id="page2">
-  <div style="text-align:center">
+  <div class="gallery-wrap">
 
-    <h1 style="color:white;">Jesteś dla mnie wszystkim 💖</h1>
+    <h1>Ja też Cię KOCHAM 💖</h1>
+<svg class="heart-bg" viewBox="0 0 512 512">
+  <path fill="white"
+    d="M256 464s-208-120-208-272c0-64 48-112 112-112
+    48 0 80 32 96 64 16-32 48-64 96-64 64 0 112 48 112 112
+    0 152-208 272-208 272z"/>
+</svg>
 
-    <div class="hearto">
-
-      <img src="1.jpg" class="img1">
-      <img src="" class="img3">
-
-      <img src="3.jpg" class="img4">
-      <img src="4.jpg" class="img5">
-      <img src="8.png" class="img6">
-      <img src="14.jpg" class="img7">
-      <img src="ja.png" class="img8">
-
-      <img src="6.png" class="img9">
-      <img src="12.jpg" class="img10">
-      <img src="10.png" class="img11">
-      <img src="13.png" class="img12">
-      <img src="13.jpg" class="img13">
-
-      <img src="2.png" class="img14">
-      <img src="9.png" class="img15">
-      <img src="" class="img16">
-
-      <img src="7.png" class="img17">
-
-    </div>
-
-    <h1 style="color:white;">
-      Nie potrzebuję nic więcej.<br>
-      Wystarczy, że jesteś i się uśmiechasz 🥺❤️
-    </h1>
-
+  <div class="photos">
+    <img src="2.jpg">
+    <img src="3.png">
+    <img src="1.png">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+  </div>
+<a href="index.html">
+  <button id="backBtn">⬅ Powrót</button>
+</a>
   </div>
 </div>
 
 <script>
 
 const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+/* UCIEKAJĄCY TAK */
 let moves = 0;
 
-/* YES UCIEKA 20 RAZY */
-yes.addEventListener("mouseover", ()=>{
-
-  if(moves < 30){
+yes.addEventListener("mouseover", () => {
+  if (moves < 15) {
     const x = Math.random()*300 - 150;
-    const y = Math.random()*200 - 150;
+    const y = Math.random()*200 - 100;
     yes.style.transform = `translate(${x}px, ${y}px)`;
     moves++;
   }
 });
 
 /* PRZEJŚCIE */
-yes.onclick = ()=>{
+yes.onclick = () => {
   document.getElementById("page1").classList.remove("active");
   document.getElementById("page2").classList.add("active");
 };
 
+/* NIE -> POWIĘKSZA TAK */
+let scale = 1;
+
+no.addEventListener("click", () => {
+  scale += 0.5;
+  yes.style.transform = `scale(${scale})`;
+  yes.style.zIndex = "999";
+});
+
 /* LIGHTBOX */
-document.querySelectorAll(".hearto img").forEach(img=>{
-  img.addEventListener("click", ()=>{
+document.querySelectorAll(".photos img").forEach(img => {
+  img.addEventListener("click", () => {
     const box = document.createElement("div");
     box.className = "lightbox";
 
@@ -268,27 +314,31 @@ document.querySelectorAll(".hearto img").forEach(img=>{
     box.appendChild(big);
     document.body.appendChild(box);
 
-    box.addEventListener("click", ()=>box.remove());
+    box.onclick = () => box.remove();
   });
 });
 
-/* SERCA W TLE */
+/* SERCA */
 function createHeart(){
   const heart = document.createElement("div");
-  heart.classList.add("heart");
+  heart.className = "heart";
   heart.innerHTML = "❤️";
 
   heart.style.left = Math.random()*100 + "vw";
-  heart.style.fontSize = (10 + Math.random()*30) + "px";
-  heart.style.animationDuration = (4 + Math.random()*5) + "s";
+  heart.style.fontSize = (10 + Math.random()*25) + "px";
+  heart.style.animationDuration = (4 + Math.random()*4) + "s";
 
   document.body.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),9000);
+  setTimeout(() => heart.remove(), 8000);
 }
 
-setInterval(createHeart,250);
+setInterval(createHeart, 250);
 
+
+document.getElementById("backBtn").onclick = () => {
+  document.getElementById("page2").classList.remove("active");
+  document.getElementById("page1").classList.add("active");
+};
 </script>
 
 </body>

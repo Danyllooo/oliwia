@@ -6,140 +6,150 @@
 <title>Kocham Cię Oliwia ❤️</title>
 
 <style>
-  *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-  }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  body {
-    height: 100vh;
-    background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
+html, body{
+  min-height:100vh;
+  overflow-y:scroll;;
+  font-family:Arial, sans-serif;
+}
 
-  /* Tło blur */
-  .bg-glow{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background: rgba(255,255,255,0.15);
-    filter: blur(120px);
-    border-radius:50%;
-    animation: pulse 5s infinite alternate;
-  }
+/* TŁO */
+body{
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
 
-  @keyframes pulse{
-    from{
-      transform: scale(1);
-    }
-    to{
-      transform: scale(1.3);
-    }
-  }
+/* TEKSTURA */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("back.jpg") repeat;
+  background-size:5100px;
+  opacity:0.18;
+  pointer-events:none;
+  z-index:0;
+}
 
-  /* Główna karta */
-  .card{
-    position: relative;
-    z-index: 5;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
-    padding: 35px;
-    border-radius: 30px;
-    text-align:center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.2);
-    animation: floatCard 4s ease-in-out infinite;
-  }
+/* BLOOM */
+.bg-glow{
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:rgba(255,255,255,0.15);
+  filter:blur(120px);
+  border-radius:50%;
+  animation:pulse 5s infinite alternate;
+  z-index:0;
+}
 
-  @keyframes floatCard{
-    0%,100%{
-      transform: translateY(0px);
-    }
-    50%{
-      transform: translateY(-10px);
-    }
-  }
+@keyframes pulse{
+  from{transform:scale(1);}
+  to{transform:scale(1.3);}
+}
 
-  h1 {
-    color: white;
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
+/* KARTA */
+.card{
+  position:relative;
+  z-index:2;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  padding:35px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  border:1px solid rgba(255,255,255,0.2);
+  animation:floatCard 4s ease-in-out infinite;
+}
 
-  p{
-    color:white;
-    font-size:1.1em;
-    margin-top:15px;
-  }
+@keyframes floatCard{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
 
-  /* GIF kota */
-  .cat{
-    width: 220px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    transition: 0.4s;
-  }
+h1{
+  color:white;
+  font-size:2.5em;
+  margin-bottom:15px;
+}
 
-  .cat:hover{
-    transform: scale(1.05) rotate(2deg);
-  }
+p{
+  color:white;
+  font-size:1.1em;
+  margin-top:10px;
+}
 
-  .heart {
-    position: absolute;
-    color: white;
-    animation: floatUp linear infinite;
-    opacity: 0.7;
-    pointer-events:none;
-  }
+/* KOT */
+.cat{
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  transition:0.4s;
+}
 
-  @keyframes floatUp {
-    0% {
-      transform: translateY(100vh) scale(1);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-10vh) scale(1.6);
-      opacity: 0;
-    }
-  }
+.cat:hover{
+  transform:scale(1.05) rotate(2deg);
+}
 
-  .love-btn{
-    margin-top:20px;
-    border:none;
-    background:white;
-    color:#ff4d6d;
-    padding:12px 25px;
-    border-radius:30px;
-    font-size:1em;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-  }
+/* PRZYCISK */
+.love-btn{
+  margin-top:25px;
+  border:none;
+  background:linear-gradient(180deg,#fff,#ffeef2);
+  color:#ff2f57;
+  padding:16px 45px;
+  border-radius:30px;
+  font-size:1.1rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:0.2s ease;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
 
-  .love-btn:hover{
-    transform: scale(1.08);
-    background:#ffe5ec;
-  }
+.love-btn:hover{
+  transform:translateY(-4px) scale(1.05);
+}
 
-  /* Tekst po kliknięciu */
-  #message{
-    margin-top:15px;
-    color:white;
-    font-size:1.2em;
-    opacity:0;
-    transition:0.5s;
-  }
+/* COUNTER */
+#counter{
+  color:white;
+  font-size:1.1em;
+  margin-top:15px;
+  font-weight:bold;
+}
 
+/* SERCA */
+.heart{
+  position:fixed;
+  color:white;
+  pointer-events:none;
+  opacity:0.7;
+  animation:floatUp linear forwards;
+  z-index:1;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh); opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-10vh); opacity:0;}
+}
+p{
+  color:white;
+  font-size:1.1rem;
+  line-height:1.6;
+  max-width:600px;
+  margin-top:15px;
+  text-align:left;
+  white-space:pre-line;
+}
 </style>
 </head>
 
@@ -149,94 +159,80 @@
 
 <div class="card">
 
+  <h1>❤️ Kocham Cie Oliwka ❤️</h1>
+
+  <img class="cat"
+    src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW82eDlmdmN6eGR5aGljNnR0ZmZrd25maDVmaDVlb21mOWoybXFrdyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/yc2pHdAoxVOrJ2m5Ha/giphy.gif">
+<p>
+Hej Myszko<br>
+
+jeśli to czytasz to pewnie coś w tobie się odezwało i może znowu pojawił się niepokój albo myśli że coś jest nie tak. chce żebyś wtedy zatrzymała się na chwilę i przeczytała to do końca<br>
+
+ja jestem przy tobie. nie tylko wtedy kiedy jest łatwo i wszystko gra ale też wtedy kiedy masz gorszy dzień kiedy się boisz kiedy masz w głowie chaos i sama nie wiesz co czujesz<br>
+
+nie znikam. nie uciekam od ciebie kiedy robi się trudniej. wiem że czasem możesz mieć wrażenie że coś się zmienia ale to nie znaczy że ja się oddalam. to tylko życie, chwile zmęczenia, cisza, zwykłe rzeczy które nie mają nic wspólnego z moimi uczuciami do ciebie<br>
+
+bo moje uczucia do ciebie są stałe. spokojne i prawdziwe. czasem może nie umiem ich dobrze pokazać ale one są we mnie cały czas. ty jesteś dla mnie ważna nawet wtedy kiedy o tym nie mówię<br>
+
+chce żebyś wiedziała że nie musisz się bać że mnie stracisz przez jedną myśl, jeden dzień, jedną emocję. nie musisz być idealna żeby zasługiwać na mnie. nie musisz nic udowadniać<br>
+
+ja wybieram ciebie w zwykłych chwilach. w tych cichych porankach i w zwykłych wieczorach. nie tylko wtedy kiedy wszystko jest piękne ale też wtedy kiedy jest trudno i kiedy nie jest idealnie<br>
+
+jeśli kiedykolwiek poczujesz że jestem daleko to chce żebyś pamiętała że ja wracam. nawet jak milczę to nie znikam z twojego świata. jestem tylko gdzieś obok i dalej cię wybieram<br>
+
+kocham ciebie taka jaka jestes. z twoimi myślami które czasem cię męczą z twoją wrażliwością z tym jak mocno czujesz świat. nie musisz tego ukrywać przede mną<br>
+
+chce być dla ciebie spokojem nie kolejnym lękiem. chce żebyś przy mnie mogła oddychać trochę łatwiej
+
+i jeśli kiedyś znowu przyjdzie niepokój to nie jesteś z nim sama. jestem z tobą. naprawdę</p>
 
 
-  <!-- Słodki gif kota -->
-  <img 
-    class="cat"
-    src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW82eDlmdmN6eGR5aGljNnR0ZmZrd25maDVmaDVlb21mOWoybXFrdyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/yc2pHdAoxVOrJ2m5Ha/giphy.gif"
-    alt="Cute cat"
-  >
+  <div id="counter"></div>
 
-  <p>„Są ludzie, którzy po prostu są. I są tacy, którzy zmieniają sposób, w jaki patrzysz na wszystko. Ty jesteś tym drugim przypadkiem.” 💖</p>
-  <p>„Nie chodzi tylko o to, że Cię lubię. Chodzi o to, że przy Tobie czuję coś, czego nie umiem nazwać i nawet nie chcę tego psuć słowami.”</p>
-  <p>„Nie wiem jak to powiedzieć mądrze, ale odkąd jesteś w moim życiu, wszystko stało się bardziej realne. Jakby świat w końcu miał sens.”</p>
-<div id="counter" style="
-  color:white;
-  font-size:1.2em;
-  margin-top:15px;
-  font-weight:bold;
-">
-</div>
-
-<a href="index2.html">
-<button herf="index2.html" class="love-btn">
-  Kliknij ❤️
-</button>
-</a>
-
-<a href="index3.html">
-<button herf="index2.html" class="love-btn">
-  Notki ❤️
-</button>
-</a>
-
-  <div id="message">
-    Kocham Cię coraz bardziej każdego dnia 🥺💕
-  </div>
+  <!-- 🔥 JEDEN PRZYCISK -->
+  <a href="index.html">
+    <button class="love-btn">Powrót ❤️</button>
+  </a>
 
 </div>
 
 <script>
 
-  function createHeart() {
-    const heart = document.createElement("div");
+/* SERCA */
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
 
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (10 + Math.random()*25) + "px";
+  heart.style.animationDuration = (4 + Math.random()*4) + "s";
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (10 + Math.random() * 35) + "px";
-    heart.style.animationDuration = (3 + Math.random() * 20) + "s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+}
 
-    document.body.appendChild(heart);
+setInterval(createHeart, 200);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 8000);
-  }
-
-  setInterval(createHeart, 200);
-
-  function showLove(){
-    const msg = document.getElementById("message");
-
-    msg.style.opacity = "1";
-
-    for(let i=0;i<25;i++){
-      createHeart();
-    }
-  }
-
-
-function updateCounter() {
+/* COUNTER */
+function updateCounter(){
   const startDate = new Date("2026-05-09T00:00:00");
   const now = new Date();
 
   const diff = now - startDate;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const minutes = Math.floor((diff / (1000*60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
   document.getElementById("counter").innerHTML =
-    `💞 Jesteśmy razem już:<br>
-     ${days} dni ${hours} godz. ${minutes} min. ${seconds} sek.`;
+    `💞 Jesteśmy razem już:<br>${days} dni ${hours} godz. ${minutes} min. ${seconds} sek.`;
 }
 
 updateCounter();
 setInterval(updateCounter, 1000);
+
 </script>
 
 </body>
